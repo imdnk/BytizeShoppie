@@ -1,29 +1,34 @@
 import react, { useState, useContext, useEffect } from "react";
 import { Text,View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
+import { FavouriteContext} from "../services/Favourites";
 
-const StepBar = ({item}) => {
-  return(
-    <View style = {{flexDirection: "row", justifyContent: "center"
-}}>
-<Button onPress={() => {item.quantity = item.quantity+1}}>+</Button>
-<TextInput style ={{ height: 25}} value = {JSON.stringify(item.quantity)} onChange = {(data) =>{ setQuantity(parseInt(data))}}></TextInput>
-<Button  onPress={() => {item.quantity = item.quantity-1}}>-</Button>
-<Button  onPress={() => {item.quantity = item.quantity}}>Add to Cart</Button>
-</View>
-  )
-}
+export const QuantityBar = ({item,value, setValue}) => {
 
-export const QuantityBar = ({item}) =>{
+  const {add} = useContext(FavouriteContext);
 
-    useEffect(() => {
-        console.log("working")
-    },[item.quantity])
+  const inc = () => {
+      setValue(++value)
+  }
 
-    const setQuantity = (data) => {
-        item.quantity = data;
+  const dec = () => {
+    if(value > 0)
+    {
+      setValue(--value)
+    }  
+    else{
+      setValue(0)
     }
-    console.log(item.name);
-    console.log(item.quantity);
-    return(<StepBar item = {item} />);
-};
+}
+  const setData = ({data}) => {
+    setValue(data)
+  }
+
+  return(<View style = {{flexDirection: "row", justifyContent: "center"
+}}>
+<Button onPress={inc}>+</Button>
+<TextInput style ={{ height: 25}} value = {JSON.stringify(value)} onChange = {(data) =>{ setData(data)}}></TextInput>
+<Button  onPress={dec}>-</Button>
+<Button  onPress={() => {add(item)}}>Add to Cart</Button>
+</View>);
+ };

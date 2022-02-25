@@ -6,14 +6,13 @@ import { QuantityBar } from "./quantitybar";
 
 
 export const CartCard = ({item}) => {
-       const {
-              id = 1,
-              name= "Product 1",
-              img_url= "https://cdn.imgbin.com/8/18/5/imgbin-chocolate-bar-cadbury-dairy-milk-candy-chocolate-5aQ3ipqSJhKd1T712W1DwwH4G.jpg",
-              price = 100,
-              quantity= 0,
-              } = item;
+       const [value, setValue] = useState(item.quantity);
        const [isToggled, setIsToggled] = useState(false);
+       
+       useEffect(() => {
+         item.quantity = value;
+       },[value])
+      
   return( 
     <View style = {{ padding: 12,}}>
            <Card onPress={() => {setIsToggled(!isToggled)}}>
@@ -23,7 +22,7 @@ export const CartCard = ({item}) => {
       <Text>Prize:{item.price}</Text>
      </Card.Content>
      </Card>
-     {isToggled && <QuantityBar item = {item}/>}
+     {isToggled && <QuantityBar item = {item} value = {value} setValue = {setValue}/>}
     </View>
        );
     

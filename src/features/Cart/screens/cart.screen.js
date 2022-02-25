@@ -1,36 +1,43 @@
-import React, { useEffect, useState } from "react";
-import { Text, SafeAreaView, ScrollView } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { Text, SafeAreaView, ScrollView, View } from "react-native";
 import {CompactCard} from '../components/compact-card'
 
 import { Mocks } from "../../../services/index";
 import {  style } from '../../../components/style';
-
-
-
+import { FavouriteContext } from "../../../services/Favourites";
 
 export const CartScreen = () => {
- 
+
+  const {favourites} = useContext(FavouriteContext);
+
   const CartList = () =>{
-   
     return(
-      <ScrollView>
-      {Mocks.map((item) => {
-      if(item.quantity)
-      {
-          <SafeAreaView style = {style.SafeArea}>
-              <Text> No Items added</Text>
-          </SafeAreaView>
-      }
-       return (<CompactCard item ={item} />);
-    })}
-    </ScrollView>
+      <View>
+            <ScrollView>
+          {favourites.map((item) => {
+           return (<CompactCard item ={item} />);
+        })}
+        </ScrollView>
+      </View>   
     ); 
   }
-  return(
-  <SafeAreaView style = {style.SafeArea}>
-    <Text>    
-      Cart Screen here.....
-    </Text>
-       <CartList /> 
-  </SafeAreaView> )
+
+  if(favourites.length)
+  {
+    return(
+      <SafeAreaView style = {style.SafeArea}>
+        <Text>    
+          Cart Screen here.....
+        </Text>
+           <CartList /> 
+      </SafeAreaView> )
+  }
+  else{
+    return(
+      <SafeAreaView style = {style.SafeArea}>
+      <Text> No Cart items</Text>
+      </SafeAreaView>
+    );
+  }
+  
 };

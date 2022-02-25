@@ -7,11 +7,11 @@ export const Mocks =
     "price": 100,
     "quantity": 0,
     "taxes": [{
-        "id": 1,
+        
         "name": "SGST 18%",
         "rate": 18
     }, {
-        "id": 2,
+    
         "name": "CGST 18%",
         "rate": 18
     }]
@@ -23,11 +23,11 @@ export const Mocks =
     "price": 100,
     "quantity": 0,
     "taxes": [{
-        "id": 3,
+       
         "name": "SGST 18%",
         "rate": 18
     }, {
-        "id": 4,
+        
         "name": "CGST 18%",
         "rate": 18
     }]
@@ -39,11 +39,11 @@ export const Mocks =
     "price": 100,
     "quantity": 0,
     "taxes": [{
-        "id": 5,
+        
         "name": "SGST 18%",
         "rate": 18
     }, {
-        "id": 6,
+        
         "name": "CGST 18%",
         "rate": 18
     }]
@@ -55,11 +55,11 @@ export const Mocks =
     "price": 100,
     "quantity": 0,
     "taxes": [{
-        "id": 7,
+        
         "name": "SGST 18%",
         "rate": 18
     }, {
-        "id": 8,
+        
         "name": "CGST 18%",
         "rate": 18
     }]
