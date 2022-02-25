@@ -14,7 +14,9 @@ export const HomeScreen = ({navigation}) => {
       Home Screen here.....
       </Text>
       <ScrollView>
-        {Mocks.map((item) => { return (<CartCard item ={item} />);})}
+        {Mocks.map((item) => { 
+          
+          return (<CartCard item ={item} />);})}
       </ScrollView>  
   </SafeAreaView>
   );
