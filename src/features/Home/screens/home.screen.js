@@ -10,10 +10,7 @@ export const HomeScreen = ({navigation}) => {
   
   return(
   <SafeAreaView style ={style.SafeArea}>
-      <Text>
-      Home Screen here.....
-      </Text>
-      <ScrollView>
+           <ScrollView>
         {Mocks.map((item) => { 
           
           return (<CartCard item ={item} />);})}
